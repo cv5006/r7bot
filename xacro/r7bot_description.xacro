@@ -47,15 +47,21 @@
         <color rgba="0.2 0.2 0.2 1.0"/>
       </material>
     </visual>
+    <collision>
+      <origin xyz="0 0 0.1" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
   </link>
 
-  <xacro:create_body number="1" parent="base_link" wdith="0.2" length="0.1" a="0.0"  d="0.2"  alpha="0.0"     rgb="0.2 0.4 0.7"/>
-  <xacro:create_body number="2" parent="link1"     wdith="0.2" length="0.6" a="0.0"  d="0.1"  alpha="${pi/2}" rgb="0.2 0.4 0.7"/>
-  <xacro:create_body number="3" parent="link2"     wdith="0.2" length="0.4" a="0.6"  d="0.0"  alpha="0.0"     rgb="0.2 0.4 0.7"/>
-  <xacro:create_body number="4" parent="link3"     wdith="0.1" length="0.1" a="0.4"  d="0.0"  alpha="${pi/2}" rgb="0.2 0.2 0.2"/>
-  <xacro:create_body number="5" parent="link4"     wdith="0.1" length="0.4" a="0.05" d="0.05" alpha="${pi/2}" rgb="0.2 0.4 0.7"/>
-  <xacro:create_body number="6" parent="link5"     wdith="0.1" length="0.3" a="0.4"  d="0.05" alpha="${pi/2}" rgb="0.2 0.4 0.7"/>
-  <xacro:create_body number="7" parent="link6"     wdith="0.1" length="0.2" a="0.3"  d="0.0"  alpha="${pi/2}" rgb="0.2 0.4 0.7"/>
+  <xacro:create_body number="1" parent="base_link" wdith="0.2"  length="0.1" a="0.0"  d="0.2"  alpha="0.0"     rgb="0.2 0.4 0.7"/>
+  <xacro:create_body number="2" parent="link1"     wdith="0.1"  length="0.6" a="0.0"  d="0.1"  alpha="${pi/2}" rgb="0.2 0.4 0.7"/>
+  <xacro:create_body number="3" parent="link2"     wdith="0.1"  length="0.4" a="0.6"  d="0.0"  alpha="0.0"     rgb="0.2 0.4 0.7"/>
+  <xacro:create_body number="4" parent="link3"     wdith="0.1"  length="0.1" a="0.4"  d="0.0"  alpha="${pi/2}" rgb="0.2 0.2 0.2"/>
+  <xacro:create_body number="5" parent="link4"     wdith="0.04" length="0.4" a="0.1" d="-0.07" alpha="${pi/2}" rgb="0.2 0.4 0.7"/>
+  <xacro:create_body number="6" parent="link5"     wdith="0.04" length="0.3" a="0.4"  d="0.04" alpha="${pi/2}" rgb="0.2 0.4 0.7"/>
+  <xacro:create_body number="7" parent="link6"     wdith="0.04" length="0.2" a="0.3"  d="0.0"  alpha="${pi/2}" rgb="0.2 0.4 0.7"/>
 
   <link name="flange"/>
   <joint name="flange_pin" type="fixed">
