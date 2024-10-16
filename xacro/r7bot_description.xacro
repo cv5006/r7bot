@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:macro name="r7bot_description">
+
+  <!-- helper macro -->
+  <xacro:macro name="create_body" params="number parent wdith length a d alpha rgb">
+    <link name="link${number}">
+      <visual>
+        <origin xyz="${length/2} 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="${length} ${wdith} ${wdith}"/>
+        </geometry>
+        <material name="">
+          <color rgba="${rgb} 1.0"/>
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="${length/2} 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="${length} ${wdith} ${wdith}"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="1"/>
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+      </inertial>
+    </link>
+
+    <joint name="joint${number}" type="revolute">
+      <parent link="${parent}"/>
+      <child link="link${number}"/>
+      <origin xyz="${a} 0 ${d}" rpy="${alpha} 0 0"/>
+      <axis xyz="0 0 1"/>
+      <limit upper="${pi}" lower="${-pi}" effort="100" velocity="1.0"/>
+    </joint>
+  </xacro:macro>
+
+  <!-- model -->
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0.1" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.3 0.3 0.2"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.2 0.2 0.2 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <xacro:create_body number="1" parent="base_link" wdith="0.2" length="0.1" a="0.0"  d="0.2"  alpha="0.0"     rgb="0.2 0.4 0.7"/>
+  <xacro:create_body number="2" parent="link1"     wdith="0.2" length="0.6" a="0.0"  d="0.1"  alpha="${pi/2}" rgb="0.2 0.4 0.7"/>
+  <xacro:create_body number="3" parent="link2"     wdith="0.2" length="0.4" a="0.6"  d="0.0"  alpha="0.0"     rgb="0.2 0.4 0.7"/>
+  <xacro:create_body number="4" parent="link3"     wdith="0.1" length="0.1" a="0.4"  d="0.0"  alpha="${pi/2}" rgb="0.2 0.2 0.2"/>
+  <xacro:create_body number="5" parent="link4"     wdith="0.1" length="0.4" a="0.05" d="0.05" alpha="${pi/2}" rgb="0.2 0.4 0.7"/>
+  <xacro:create_body number="6" parent="link5"     wdith="0.1" length="0.3" a="0.4"  d="0.05" alpha="${pi/2}" rgb="0.2 0.4 0.7"/>
+  <xacro:create_body number="7" parent="link6"     wdith="0.1" length="0.2" a="0.3"  d="0.0"  alpha="${pi/2}" rgb="0.2 0.4 0.7"/>
+
+  <link name="flange"/>
+  <joint name="flange_pin" type="fixed">
+    <parent link="link7"/>
+    <child link="flange"/>
+    <origin xyz="0.2 0 0" rpy="0 0 0"/>
+  </joint>
+
+</xacro:macro>
+
+</robot>
