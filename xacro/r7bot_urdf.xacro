@@ -6,13 +6,6 @@
   <xacro:include filename="$(find r7bot)/xacro/r7bot_description.xacro"/>
   <xacro:include filename="$(find r7bot)/xacro/r7bot_ros2_control.xacro" />
 
-  <!-- Used for fixing robot -->
-  <link name="world"/>
-  <joint name="pin" type="fixed">
-    <parent link="world"/>
-    <child link="base_link"/>
-  </joint>
-
   <!-- Use macros -->
   <xacro:r7bot_description/>
   <xacro:r7bot_ros2_control/>
